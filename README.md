@@ -18,7 +18,7 @@ Python 3.10+, dpkt for decoding, and Matplotlib for headless chart generation. C
 - `analyzer.py` reads the capture, classifies frames, and creates the chart.
 - `make_sample.py` generates six synthetic packet records on disk.
 - `requirements.txt` pins the direct dependencies.
-- [Development notes](docs/development-notes.md), [testing guide](docs/testing-guide.md) and [concepts](docs/concepts.md) in`docs/` explain the implementation and the networking background.
+- [Development notes](docs/development-notes.md)and [concepts](docs/concepts.md) in`docs/` explain the implementation and the networking background.
 
 ## Installation and use
 
