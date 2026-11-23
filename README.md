@@ -34,7 +34,10 @@ python analyzer.py sample.pcap
 
 ## Results and observations
 
-The developer run counted six synthetic packets and 255 captured bytes. It found two TCP packets and one each of UDP, ICMP, ARP and Other. The PNG was generated. A missing file and a text file named `invalid.pcap` both returned errors. Personal verification is pending.
+I ran the analyzer in WSL on the generated six-packet sample. It counted 255
+captured bytes: two TCP packets and one each of UDP, ICMP, ARP, and Other. I
+verified that it generated a PNG chart, reported errors for missing and invalid
+captures, and preserved the existing chart when I reused its output path.
 
 | Test | Action | Result |
 |---|---|---|
@@ -43,11 +46,6 @@ The developer run counted six synthetic packets and 255 captured bytes. It found
 | Missing | Run `python analyzer.py missing.pcap --chart missing.png` | Error for missing file and no PNG |
 | Invalid | Run `echo invalid > invalid.pcap`, then `python analyzer.py invalid.pcap --chart invalid.png` | Error for invalid capture and no PNG |
 | Existing output | Run `python analyzer.py sample.pcap` again | Existing-file error preserves the original chart |
-
-I ran the analyzer in WSL on the generated six-packet sample. It counted 255
-captured bytes: two TCP packets and one each of UDP, ICMP, ARP, and Other. I
-verified that it generated a PNG chart, reported errors for missing and invalid
-captures, and preserved the existing chart when I reused its output path.
 
 ![Protocol distribution for the six-packet synthetic sample](docs/screenshots/protocols.png)
 
