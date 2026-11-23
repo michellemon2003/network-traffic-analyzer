@@ -1,4 +1,5 @@
-# Network Traffic Analyzer
+# Network Traffic Analyzer ? Python, PCAP & Matplotlib
+Built an offline Python CLI that summarizes Ethernet PCAP files and generates protocol-distribution charts. Verified packet counts, chart generation, and error handling with a reproducible synthetic capture.
 
 ## Overview and problem
 
@@ -17,7 +18,7 @@ Python 3.10+, dpkt for decoding, and Matplotlib for headless chart generation. C
 - `analyzer.py` reads the capture, classifies frames, and creates the chart.
 - `make_sample.py` generates six synthetic packet records on disk.
 - `requirements.txt` pins the direct dependencies.
-- [Development notes](docs/development-notes.md), [testing guide](docs/testing-guide.md) and [concepts](docs/concepts.md) are in `docs/`.
+- [Development notes](docs/development-notes.md), [testing guide](docs/testing-guide.md) and [concepts](docs/concepts.md) in`docs/` explain the implementation and the networking background.
 
 ## Installation and use
 
@@ -43,6 +44,12 @@ The developer run counted six synthetic packets and 255 captured bytes. It found
 | Invalid | Run `echo invalid > invalid.pcap`, then `python analyzer.py invalid.pcap --chart invalid.png` | Error for invalid capture and no PNG |
 | Existing output | Run `python analyzer.py sample.pcap` again | Existing-file error preserves the original chart |
 
+I ran the analyzer in WSL on the generated six-packet sample. It counted 255
+captured bytes: two TCP packets and one each of UDP, ICMP, ARP, and Other. I
+verified that it generated a PNG chart, reported errors for missing and invalid
+captures, and preserved the existing chart when I reused its output path.
+
+![Protocol distribution for the six-packet synthetic sample](docs/screenshots/protocols.png)
 
 ## Limitations
 
